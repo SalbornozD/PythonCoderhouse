@@ -38,7 +38,7 @@
                 {% if is_authenticated %}
                 <div class="d-flex flex-column justify-content-end align-items-stretch full-height gap-3">
                     <a href="/noticias/crear/">Crear nueva noticia</a>
-                    <a href="">Crear nuevo decreto</a>
+                    <a href="/admin/">Administración</a>
                     <form method="POST" action="{% url 'logout' %}" class="d-flex flex-column align-items-stretch">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Cerrar sesión</button>

@@ -1,0 +1,83 @@
+{% extends 'main/utils/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'main/utils/navbar.html' %}
+<main id="pg-index">
+    <section class="header d-flex flex-column justify-content-center align-items-center">
+        <div class="content">
+            <!-- Carrusel -->
+            <div id="carouselExample" class="carousel slide full-height">
+                <div class="carousel-inner full-height">
+                    {% for noticia in titulares %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %} full-height">
+                        <div class="headline full-height">
+                            <div class="new-content full-height">
+                                <h6>{{ noticia.title }}</h6>
+                                <p>{{ noticia.caption }}</p>
+                                <a href="#"
+                                    class="btn btn-light d-flex flex-column justify-content-center align-items-center">Más
+                                    información</a>
+                                <img src="{{ noticia.images.first.image.url }}" alt="{{ noticia.title }}" class="image">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+    <section class="d-flex flex-column justify-content-center align-items-center">
+        <h1>El profeta digital</h1>
+    </section>
+    <section class="decretos d-flex flex-column gap-3">
+        <h2>Decretos Mágicos: Anuncios Oficiales del Ministerio</h2>
+        <div class="d-flex flex-row align-items-center justify-content-between">
+            {% for decreto in decretos %}
+            <div class="decreto">
+                <h6>Decreto N° {{decreto.id}} - {{decreto.title}}</h6>
+                <p>{{decreto.body}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <div class="row noticias">
+        <section class="col-7">
+            <h2>Ultimas noticias</h2>
+            <div>
+                {% for noticia in noticias_con_imagenes %}
+                    <div class="noticia-con-imagen d-flex flex-column">
+                        <img src="{{ noticia.images.first.image.url }}" alt="Imagen de noticia">
+                        <a href="#"><h6>{{noticia.title}}</h6></a>
+                        <p>{{noticia.caption}}</p>
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        </section>
+        <aside class="col-5">
+            {% for noticia in noticias_sin_imagenes %}
+                <div class="noticias-sin-imagenes">
+                    <a href=""><h6>{{noticia.title}}</h6></a>
+                    <p>{{noticia.caption}}</p>
+                </div>
+                <hr>
+            {% endfor %}
+        </aside>
+    </div>
+</main>
+
+{% endblock %}

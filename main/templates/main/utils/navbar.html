@@ -1,0 +1,52 @@
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">El profeta digital</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">El profeta digital</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                {% if not show_logout_button %}
+                <form method="POST" action="{% url 'index' %}">
+                    {% csrf_token %}
+                    <h6>Identificarse</h6>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="usernameInput" name="username"
+                            placeholder="Usuario">
+                        <label for="usernameInput">Usuario</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="passwordInput" name="password"
+                            placeholder="Contraseña">
+                        <label for="passwordInput">Contraseña</label>
+                    </div>
+                    <div>
+                        <input type="submit" value="Iniciar sesión" class="btn btn-success">
+                    </div>
+                    {% if login_error %}
+                    <div class="alert alert-danger mt-3">{{ login_error }}</div>
+                    {% endif %}
+                </form>
+                {% endif %}
+                {% if show_logout_button %}
+                <div class="d-flex flex-column justify-content-end align-items-stretch full-height gap-3">
+                    <a href="">Crear nueva noticia</a>
+                    <a href="">Crear nuevo decreto</a>
+                    <form method="POST" action="{% url 'logout' %}" class="d-flex flex-column align-items-stretch">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                    </form>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</nav>

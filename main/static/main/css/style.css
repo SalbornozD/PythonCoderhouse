@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poller+One&display=swap');
+
+.full-height{
+    height: 100%;
+}
+
+html, body {
+    margin: 0; /* Elimina márgenes predeterminados */
+    padding: 0; /* Elimina rellenos predeterminados */
+    height: 100%; /* Asegura que el documento ocupe toda la pantalla */
+    background-color: black;
+}
+
+h1{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10em;
+    color: whitesmoke;
+}
+
+label{
+    color: black;
+}
+
+#pg-index .header {
+    margin: 56px 0 0 0;
+    height: 70vh; 
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, black),
+        url('/static/main/img/fondo.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#pg-index .header .content{
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 70%;
+    width: 90%;
+}
+
+.headline{
+    width: 70%;
+    margin: 0 auto ;
+    padding: 10px;
+}
+
+.headline .new-content{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 25% 52% 10%;
+    grid-template-areas: "title image"
+                         "caption image"
+                         "btns image";
+    gap: 10px;
+}
+
+.headline .new-content img{
+    grid-area: image;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.headline .new-content h6{
+    grid-area: title;
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: xx-large;
+    text-align: justify;
+}
+
+.headline .new-content p{
+    grid-area: caption;
+    text-align: justify;
+}
+
+.headline .new-content a{
+    grid-area: btns;
+}
+
+.decreto{
+    border: black solid 1px;
+    width: 300px;
+    height: 250px;
+    color: white;
+}
+
+.decreto h6{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+    text-align: justify;
+}
+
+.decreto p{
+    text-align: justify;
+}
+
+.decretos{
+    margin: 0 25px;
+}
+
+.decretos h2{
+    color: white;
+}
+
+
+.noticias{
+    margin: 0 25px;
+}
+
+.noticia-con-imagen{
+    width: 100%;
+    overflow: hidden;
+}
+
+.noticia-con-imagen img{
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.noticia-con-imagen a h6{
+    grid-area: titulo;
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: xx-large;
+    text-align: justify;
+    color: white;
+    margin-top: 15px;
+}
+
+.noticia-con-imagen a{
+    text-decoration: none;
+}
+
+.noticia-con-imagen p{
+    grid-area: subtitulo;
+    color: grey;
+}
+
+.noticias section h2{
+    color: white;
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3em;
+}
+
+.noticias-sin-imagenes a{
+    text-decoration: none;
+}
+
+.noticias-sin-imagenes a h6{
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: x-large;
+    text-align: justify;
+    color: white;
+}
+
+.noticias-sin-imagenes p{
+    color: grey;
+    text-align: justify;
+}

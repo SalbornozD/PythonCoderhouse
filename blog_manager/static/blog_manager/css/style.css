@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poller+One&display=swap');
+
 body{
     background-color: black;
     padding-top: 56px;
@@ -9,9 +12,21 @@ img{
 
 body h1{
     color: white;
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4em;
 }
 
 p{
     color: white;
     text-align: justify;
+}
+
+label{
+    color: black;
+}
+
+.font-white{
+    color: white;
 }

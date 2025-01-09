@@ -15,7 +15,7 @@
                             <div class="new-content full-height">
                                 <h6>{{ noticia.title }}</h6>
                                 <p>{{ noticia.caption }}</p>
-                                <a href="#"
+                                <a href="/noticias/{{noticia.id}}/"
                                     class="btn btn-light d-flex flex-column justify-content-center align-items-center">Más
                                     información</a>
                                 <img src="{{ noticia.images.first.image.url }}" alt="{{ noticia.title }}" class="image">
@@ -61,7 +61,7 @@
                 {% for noticia in noticias_con_imagenes %}
                     <div class="noticia-con-imagen d-flex flex-column">
                         <img src="{{ noticia.images.first.image.url }}" alt="Imagen de noticia">
-                        <a href="#"><h6>{{noticia.title}}</h6></a>
+                        <a href="/noticias/{{noticia.id}}/"><h6>{{noticia.title}}</h6></a>
                         <p>{{noticia.caption}}</p>
                     </div>
                     <br>
@@ -71,7 +71,7 @@
         <aside class="col-5">
             {% for noticia in noticias_sin_imagenes %}
                 <div class="noticias-sin-imagenes">
-                    <a href=""><h6>{{noticia.title}}</h6></a>
+                    <a href="/noticias/{{noticia.id}}/"><h6>{{noticia.title}}</h6></a>
                     <p>{{noticia.caption}}</p>
                 </div>
                 <hr>

@@ -7,8 +7,16 @@
     <div>
         <h1>{{ noticia.title }}</h1>
         <p>{{ noticia.caption }}</p>
+        {% if is_authenticated %}
+        <div class="d-flex flex-row justify-content-around"> 
+            <a href="/noticias/editar/{{noticia.id}}/" class="btn btn-warning col-4">Editar noticia</a>
+            <a href="/noticias/eliminar/{{noticia.id}}/" class="btn btn-danger col-4">Eliminar noticia</a>
+        </div>
+        {% endif %}
     </div>
 
+
+    {% if noticia.images.all %}
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             {% for image in noticia.images.all %}
@@ -26,28 +34,20 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
+    {% endif %}
     <div>
         <div class="d-flex flex-row justify-content-between">
             <p><strong>Publicado por:</strong> {{ noticia.autor.username }}</p>
             <p><strong>Fecha:</strong> {{ noticia.publication_date }}</p>
         </div>
         <p><strong>Categoría:</strong> {{ noticia.categoria.name }}</p>
-        <p>{{ noticia.body }}</p>
+        <p>{{ noticia.body|linebreaks }}</p>
     </div>
     
 
 </main>
-<div class="">
 
     
-    
-    
 
-    
-    
-
-    {% if is_authenticated %}
-    <!-- Aquí puedes agregar opciones adicionales para usuarios autenticados si es necesario -->
-    {% endif %}
-</div>
 {% endblock %}

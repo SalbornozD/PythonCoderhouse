@@ -6,10 +6,7 @@ def index(request):
     data = {}
     
     # Si el usuario está autenticado, mostramos el botón de cerrar sesión
-    if request.user.is_authenticated:
-        data['show_logout_button'] = True
-    else:
-        data['show_logout_button'] = False
+    data["is_authenticated"] = request.user.is_authenticated
 
     # Procesar inicio de sesión si los datos están en POST
     if request.method == 'POST':

@@ -1,0 +1,64 @@
+{% extends 'blog_manager/utils/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'main/utils/navbar.html' %}
+
+<main class="container mt-5 d-flex flex-column gap-4">
+    {% if noticia %}
+    <h1>Editar noticia - {{noticia.title}}</h1>
+    {% else %}
+    <h1>Crear nueva noticia</h1>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+        {% endif %}
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" name="title" value="{{ noticia.title }}" placeholder="Título">
+            <label for="title">Título</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="caption" name="caption" value="{{ noticia.caption }}" placeholder="Subtitulo">
+            <label for="caption">Subtítulo</label>
+        </div>
+
+        <div class="form-floating">
+            <textarea class="form-control" id="body" name="body" placeholder="Cuerpo">{{ noticia.body }}</textarea>
+            <label for="body">Cuerpo</label>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="categoria">Categoría</label>
+            <select class="form-control" id="categoria" name="categoria">
+                <option value="">Seleccione</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}" {% if noticia.categoria.id == categoria.id %}selected{% endif %}>
+                        {{ categoria.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="images" class="form-label font-white">Imagenes</label>
+            <input class="form-control" type="file" id="images" name="images" multiple accept="image/*">
+            {% if noticia %}
+            <p>Advertencia: Si desea cambiar las imagenes, estas se sobreescribiran.</p>
+            {% endif %}
+        </div>
+          
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+
+    </form>
+</main>
+
+{% endblock %}

@@ -13,7 +13,7 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                {% if not show_logout_button %}
+                {% if not is_authenticated %}
                 <form method="POST" action="{% url 'index' %}">
                     {% csrf_token %}
                     <h6>Identificarse</h6>
@@ -35,9 +35,9 @@
                     {% endif %}
                 </form>
                 {% endif %}
-                {% if show_logout_button %}
+                {% if is_authenticated %}
                 <div class="d-flex flex-column justify-content-end align-items-stretch full-height gap-3">
-                    <a href="">Crear nueva noticia</a>
+                    <a href="/noticias/crear/">Crear nueva noticia</a>
                     <a href="">Crear nuevo decreto</a>
                     <form method="POST" action="{% url 'logout' %}" class="d-flex flex-column align-items-stretch">
                         {% csrf_token %}
